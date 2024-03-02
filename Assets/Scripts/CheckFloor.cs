@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckFloor : MonoBehaviour
 {
-    public bool existStage;
+    public bool existOtherStage;
     // Start is called before the first frame update
     void Start()
     {
