@@ -3,19 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]private GameObject mainCmaera;
+    [SerializeField]private Canvas mapCanvas;
+    [SerializeField]private Vector3 prevPos;
     [SerializeField]private float speed = 5.0f;
-    [SerializeField]private bool canJump = false;
     [SerializeField]private int floorVal = 1;
-    
-    [SerializeField]public GameObject mainCmaera;
-    [SerializeField]public Canvas mapCanvas;
+    [SerializeField]private bool canJump = false;
 
     // Start is called before the first frame update
     private async void Start()
     {
+        prevPos = transform.position;
         while(true)
         {
             await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+        RotatePlayer();
     }
 
     //プレイヤーの移動を実装
@@ -55,7 +58,19 @@ public class Player : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.Translate(x, 0, z);
+        transform.position += new Vector3(x, 0, z);
+    }
+
+    //プレイヤーの回転を実装
+    public void RotatePlayer()
+    {
+        var delta = transform.position - prevPos;
+        prevPos = transform.position;
+        if (delta == Vector3.zero)
+        {
+            return;
+        }
+        transform.rotation = Quaternion.LookRotation(delta, Vector3.up);
     }
 
     private void OnTriggerStay(Collider _other)
