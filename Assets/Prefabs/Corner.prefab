@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 420255805085406010}
   m_Layer: 0
   m_Name: Corner
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3dc41f952bdc4cf3a8527c60fead24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  existStage: 0
+  existOtherStage: 0
 --- !u!1 &4118811159416433717
 GameObject:
   m_ObjectHideFlags: 0
