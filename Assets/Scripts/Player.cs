@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
     {
         if (_other.gameObject.CompareTag("Goal"))
         {
+            SceneManagement.ToGoal();
             Debug.Log("Goal");
         }
     }
