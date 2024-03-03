@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     [SerializeField]private GameObject mainCmaera;
-    [SerializeField]private Canvas mapCanvas;
+    [SerializeField]private GameObject playerPoint;
     [SerializeField]private Vector3 prevPos;
     [SerializeField]private Vector3 delta;
     [SerializeField]private float speed = 5.0f;
@@ -29,11 +29,13 @@ public class Player : MonoBehaviour
                     transform.position += new Vector3(0, 50, 0);
                     floorVal = 2;
                     prevPos += new Vector3(0, 50, 0);
+                    playerPoint.layer = 8;
                 }else if(floorVal == 2)
                 {
                     transform.position += new Vector3(0, -50, 0);
                     floorVal = 1;
                     prevPos += new Vector3(0, -50, 0);
+                    playerPoint.layer = 7;
                 }
             }
         }
