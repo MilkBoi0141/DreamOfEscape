@@ -15,11 +15,11 @@ public class CanvasManager : MonoBehaviour
         enableMap = false;
     }
 
-    async void Start()
+    async UniTask Start()
     {
         while(true)
         {
-            await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Q));
+            await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Q), cancellationToken: destroyCancellationToken);
             enableMap = !enableMap;
             mapCanvas.SetActive(enableMap);
         }
