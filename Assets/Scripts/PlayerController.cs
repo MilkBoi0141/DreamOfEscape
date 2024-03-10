@@ -4,38 +4,51 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]private GameObject mainCmaera;
+    [SerializeField]private GameObject goal;
     [SerializeField]private GameObject playerPoint;
+    [SerializeField]private GameObject UIManager;
     [SerializeField]private Vector3 prevPos;
     [SerializeField]private Vector3 delta;
-    [SerializeField]private Rigidbody playerRb;
     [SerializeField]private float speed = 6.0f;
     [SerializeField]private float rotateSpeed = 10.0f;
     [SerializeField]private int floorVal = 1;
     [SerializeField]private bool canJump = false;
+    private bool canGoal = false;
+
+    public Material Emittion;
+
+    AudioSource snapSound;
+
+    void Awake()
+    {
+        snapSound = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
 #pragma warning disable UNT0006 // Incorrect message signature
     private async UniTask Start()
 #pragma warning restore UNT0006 // Incorrect message signature
     {
-        playerRb = GetComponent<Rigidbody>();
         prevPos = transform.position;
         while(true)
         {
             await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Space), cancellationToken: destroyCancellationToken);
             if (canJump == true)
             {
+            snapSound.Play();
                 if (floorVal == 1)
                 {
                     transform.position += new Vector3(0, 50, 0);
                     floorVal = 2;
                     prevPos += new Vector3(0, 50, 0);
                     playerPoint.layer = 8;
-                }else if(floorVal == 2)
+                }
+                else if(floorVal == 2)
                 {
                     transform.position += new Vector3(0, -50, 0);
                     floorVal = 1;
@@ -78,14 +91,10 @@ public class PlayerController : MonoBehaviour
         {
             speed = 10.0f;
         }
-        else 
+        else
         {
             speed = 6.0f;
         }
-        
-        /*float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.position += new Vector3(x, 0, z);*/
     }
 
     //プレイヤーの回転を実装
@@ -96,6 +105,26 @@ public class PlayerController : MonoBehaviour
         if (delta.magnitude > 0.005f)
         {
         transform.forward = Vector3.Slerp(transform.forward, delta, Time.deltaTime * rotateSpeed);
+        }
+    }
+
+    private void OnTriggerEnter(Collider _other)
+    {
+        if (_other.gameObject.CompareTag("Goal"))
+        {
+            if (canGoal == true)
+            {
+                SceneManagement.ToGoal();
+            }
+        }
+        else if (_other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("GameOver");
+        }
+
+        if (_other.gameObject.CompareTag("Switch"))
+        {
+            UIManager.GetComponent<UIManager>().ShowSwitchUI();
         }
     }
 
@@ -110,17 +139,15 @@ public class PlayerController : MonoBehaviour
             //カメラ遷移に関する実装
             mainCmaera.transform.position = _other.gameObject.transform.position + new Vector3(0, 20, -8);
         }
-    }
-
-    private void OnTriggerEnter(Collider _other)
-    {
-        if (_other.gameObject.CompareTag("Goal"))
+        if (_other.gameObject.CompareTag("Switch"))
         {
-            SceneManagement.ToGoal();
-        }
-        else if (_other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("GameOver");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _other.GetComponent<MeshRenderer>().material = Emittion;
+                canGoal = true;
+                Debug.Log(canGoal);
+                goal.GetComponent<MeshRenderer>().material = Emittion;
+            }
         }
     }
 }
