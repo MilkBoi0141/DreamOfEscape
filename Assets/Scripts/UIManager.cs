@@ -9,25 +9,36 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]private Image startImage;
     [SerializeField]private Image switchImage;
+    [SerializeField]private Image jumpImage;
 
     // Start is called before the first frame update
     async void Start()
     {
-        startImage.DOFade(1.0f, 2.5f)
+        startImage.DOFade(0.7f, 1.5f)
             .SetEase(Ease.InQuart);
         
-        await UniTask.Delay(5000);
+        await UniTask.Delay(3500);
 
         startImage.DOFade(0.0f, 1.5f);
     }
 
     public async void ShowSwitchUI()
     {
-        switchImage.DOFade(1.0f, 1.0f)
+        switchImage.DOFade(0.7f, 1.0f)
             .SetEase(Ease.InQuart);
         
-        await UniTask.Delay(4000);
+        await UniTask.Delay(3500);
 
         switchImage.DOFade(0.0f, 1.5f);
+    }
+
+    public async void ShowJumpUI()
+    {
+        jumpImage.DOFade(0.7f, 1.0f)
+            .SetEase(Ease.InQuart);
+        
+        await UniTask.Delay(3500);
+
+        jumpImage.DOFade(0.0f, 1.5f);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,5 +38,15 @@ public class SceneManagement : MonoBehaviour
     public static void ToGoal()
     {
         SceneManager.LoadScene("Goal");
+    }
+
+    public static void ToGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public static void ToMain2()
+    {
+        SceneManager.LoadScene("Main2");
     }
 }

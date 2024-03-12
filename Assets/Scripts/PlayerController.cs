@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float rotateSpeed = 10.0f;
     [SerializeField]private int floorVal = 1;
     [SerializeField]private bool canJump = false;
+    private CheckFloor checkFloor;
     private bool canGoal = false;
 
     public Material Emittion;
@@ -40,7 +39,7 @@ public class PlayerController : MonoBehaviour
             await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.Space), cancellationToken: destroyCancellationToken);
             if (canJump == true)
             {
-            snapSound.Play();
+                snapSound.Play();
                 if (floorVal == 1)
                 {
                     transform.position += new Vector3(0, 50, 0);
@@ -108,6 +107,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void OnCollisionEnter(Collision _col)
+    {   
+        if (_col.gameObject.CompareTag("Enemy"))
+        {
+            SceneManagement.ToGameOver();
+        }
+    }
+
     private void OnTriggerEnter(Collider _other)
     {
         if (_other.gameObject.CompareTag("Goal"))
@@ -117,14 +125,22 @@ public class PlayerController : MonoBehaviour
                 SceneManagement.ToGoal();
             }
         }
-        else if (_other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("GameOver");
-        }
 
         if (_other.gameObject.CompareTag("Switch"))
         {
-            UIManager.GetComponent<UIManager>().ShowSwitchUI();
+            if (!canGoal){
+                UIManager.GetComponent<UIManager>().ShowSwitchUI();
+            }
+        }
+
+        if (_other.gameObject.CompareTag("Stage"))
+        {
+            checkFloor = _other.gameObject.GetComponent<CheckFloor>();
+            canJump = checkFloor.existOtherStage;
+            if (canJump)
+            {
+                UIManager.GetComponent<UIManager>().ShowJumpUI();
+            }
         }
     }
 
@@ -132,13 +148,12 @@ public class PlayerController : MonoBehaviour
     {
         if (_other.gameObject.CompareTag("Stage"))
         {
-            //ジャンプの可能不可能に関する実装
-            CheckFloor checkFloor = _other.gameObject.GetComponent<CheckFloor>();
             canJump = checkFloor.existOtherStage;
 
             //カメラ遷移に関する実装
             mainCmaera.transform.position = _other.gameObject.transform.position + new Vector3(0, 20, -8);
         }
+
         if (_other.gameObject.CompareTag("Switch"))
         {
             if (Input.GetKeyDown(KeyCode.E))
