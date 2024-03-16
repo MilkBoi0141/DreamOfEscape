@@ -30,6 +30,7 @@ public class SwitchController : MonoBehaviour
                 if (goal.CompareTag("StageGoal"))
                 {
                     PlayerController.canGoal = true;
+                    goal.GetComponent<MeshRenderer>().material = WhiteEmittion;
                 }
                 else if (goal.CompareTag("Goal"))
                 {

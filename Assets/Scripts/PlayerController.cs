@@ -90,16 +90,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
-
-        //シフト押しながら移動でダッシュ
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = 10.0f;
-        }
-        else
-        {
-            speed = 6.0f;
-        }
     }
 
     //プレイヤーの回転を実装
@@ -119,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (_col.gameObject.CompareTag("Enemy"))
         {
             flashController.SendMessage("DarkFlash");
-            await UniTask.Delay(250);
+            await UniTask.Delay(300);
             SceneManagement.ToGameOver();
         }
     }
@@ -131,7 +121,7 @@ public class PlayerController : MonoBehaviour
             if (canGoal)
             {
                 flashController.SendMessage("DarkFlash");
-                await UniTask.Delay(250);
+                await UniTask.Delay(100);
                 SceneManagement.ToStageGoal();
             }
         }
@@ -140,7 +130,7 @@ public class PlayerController : MonoBehaviour
             if (canGoal)
             {
                 flashController.SendMessage("DarkFlash");
-                await UniTask.Delay(250);
+                await UniTask.Delay(100);
                 SceneManagement.ToGoal();
             }
         }

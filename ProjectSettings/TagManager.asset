@@ -10,6 +10,7 @@ TagManager:
   - Home
   - Switch
   - StageGoal
+  - Title
   layers:
   - Default
   - TransparentFX

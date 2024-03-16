@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -33,6 +34,17 @@ public class TitleManager : MonoBehaviour
             .SetEase(Ease.Linear);
         await UniTask.Delay(2000);
 
-        SceneManagement.ToStage1();
+        if (gameObject.CompareTag("Title"))
+        {
+            SceneManagement.ToStage1();
+        }
+        else if (gameObject.CompareTag("StageGoal"))
+        {
+            SceneManagement.ToStage2();
+        }
+        else if (gameObject.CompareTag("Goal"))
+        {
+            SceneManagement.ToTitle();
+        }
     }
 }

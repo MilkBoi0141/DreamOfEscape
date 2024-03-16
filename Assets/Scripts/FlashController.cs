@@ -27,7 +27,7 @@ public class FlashController : MonoBehaviour
     public void DarkFlash()
     {
         img.color = new Color(0, 0, 0, 0);
-        img.DOFade(1.0f, 0.25f)
+        img.DOFade(1.0f, 0.1f)
             .SetEase(Ease.Linear);
     }
 
