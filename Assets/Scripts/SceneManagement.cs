@@ -25,9 +25,14 @@ public class SceneManagement : MonoBehaviour
         }
     }
     
-    public static void ToMain()
+    public static void ToStage1()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Stage1");
+    }
+
+    public static void ToStage2()
+    {
+        SceneManager.LoadScene("Stage2");
     }
 
     public static void ToTitle()
@@ -40,13 +45,14 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene("Goal");
     }
 
+    public static void ToStageGoal()
+    {
+        SceneManager.LoadScene("StageGoal");
+    }
+
     public static void ToGameOver()
     {
         SceneManager.LoadScene("GameOver");
     }
 
-    public static void ToMain2()
-    {
-        SceneManager.LoadScene("Main2");
-    }
 }

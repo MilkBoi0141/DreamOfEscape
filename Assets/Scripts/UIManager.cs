@@ -16,9 +16,7 @@ public class UIManager : MonoBehaviour
     {
         startImage.DOFade(0.7f, 1.5f)
             .SetEase(Ease.InQuart);
-        
         await UniTask.Delay(3500);
-
         startImage.DOFade(0.0f, 1.5f);
     }
 
@@ -26,9 +24,7 @@ public class UIManager : MonoBehaviour
     {
         switchImage.DOFade(0.7f, 1.0f)
             .SetEase(Ease.InQuart);
-        
         await UniTask.Delay(3500);
-
         switchImage.DOFade(0.0f, 1.5f);
     }
 
@@ -36,9 +32,7 @@ public class UIManager : MonoBehaviour
     {
         jumpImage.DOFade(0.7f, 1.0f)
             .SetEase(Ease.InQuart);
-        
         await UniTask.Delay(3500);
-
         jumpImage.DOFade(0.0f, 1.5f);
     }
 }
