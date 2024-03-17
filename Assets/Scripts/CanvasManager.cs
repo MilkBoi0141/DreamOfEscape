@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using DG.Tweening;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -10,11 +9,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]private GameObject mapCanvas;
 
     // Start is called before the first frame update
-    void Awake()
-    {
-        enableMap = false;
-    }
-
+#pragma warning disable UNT0006 // Incorrect message signature
     async UniTask Start()
     {
         while(true)

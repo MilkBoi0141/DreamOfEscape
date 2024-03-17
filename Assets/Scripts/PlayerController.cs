@@ -102,18 +102,6 @@ public class PlayerController : MonoBehaviour
         transform.forward = Vector3.Slerp(transform.forward, delta, Time.deltaTime * rotateSpeed);
         }
     }
-
-
-    private async void OnCollisionEnter(Collision _col)
-    {   
-        if (_col.gameObject.CompareTag("Enemy"))
-        {
-            flashController.SendMessage("DarkFlash");
-            await UniTask.Delay(300);
-            SceneManagement.ToGameOver();
-        }
-    }
-
     private async void OnTriggerEnter(Collider _other)
     {
         if (_other.gameObject.CompareTag("StageGoal"))
@@ -140,6 +128,18 @@ public class PlayerController : MonoBehaviour
             if (!canGoal){
                 uIManager.ShowSwitchUI();
             }
+        }
+
+        if (_other.gameObject.CompareTag("Enemy"))
+        {
+            flashController.SendMessage("DarkFlash");
+            await UniTask.Delay(300);
+            SceneManagement.ToGameOver();
+        }
+
+        if (_other.gameObject.CompareTag("EnemySearch"))
+        {
+            uIManager.EnemyUI();
         }
     }
 

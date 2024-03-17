@@ -11,6 +11,7 @@ TagManager:
   - Switch
   - StageGoal
   - Title
+  - EnemySearch
   layers:
   - Default
   - TransparentFX

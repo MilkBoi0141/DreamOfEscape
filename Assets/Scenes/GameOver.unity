@@ -444,7 +444,6 @@ GameObject:
   - component: {fileID: 812543976}
   - component: {fileID: 812543975}
   - component: {fileID: 812543974}
-  - component: {fileID: 812543977}
   - component: {fileID: 812543978}
   m_Layer: 5
   m_Name: Text (Legacy)
@@ -610,18 +609,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812543972}
   m_CullTransparentMesh: 1
---- !u!114 &812543977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812543972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299e076cd558f4212b78ba0324af2c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &812543978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,7 +823,7 @@ RectTransform:
   m_GameObject: {fileID: 1733446563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41566655, y: 0.41566655, z: 0.41566655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1681731011}
@@ -844,7 +831,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.00024414062, y: -0.00012207031}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733446565
 MonoBehaviour:
