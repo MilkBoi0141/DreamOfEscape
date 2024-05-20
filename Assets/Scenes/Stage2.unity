@@ -2761,7 +2761,7 @@ GameObject:
   - component: {fileID: 549665896}
   - component: {fileID: 549665895}
   - component: {fileID: 549665894}
-  - component: {fileID: 549665893}
+  - component: {fileID: 549665897}
   m_Layer: 0
   m_Name: RedSwitch
   m_TagString: Switch
@@ -2785,28 +2785,6 @@ Transform:
   - {fileID: 1682615997}
   m_Father: {fileID: 788575335}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &549665893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549665891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c468b568458a848428937b361fc3e65b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisSwitchOn: 0
-  colorLights:
-  - {fileID: 1818596722}
-  - {fileID: 2075490551}
-  blueSwitch: {fileID: 925335435}
-  greenSwitch: {fileID: 1116912561}
-  redSwitch: {fileID: 549665891}
-  goal: {fileID: 901488404}
-  Emittion: {fileID: 2100000, guid: 75723e693e1ef4c4c97d8cd597da0288, type: 2}
-  WhiteEmittion: {fileID: 2100000, guid: 5bbb28c6c967b4e8b8ffab8d5d1317e8, type: 2}
 --- !u!65 &549665894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2878,6 +2856,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549665891}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &549665897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549665891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90f2a42f0ae5407dba4d3d3d15d7992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteSwitch: 0
+  bySwitch: 0
+  colorLights:
+  - {fileID: 1818596722}
+  - {fileID: 2075490551}
+  goal: {fileID: 901488404}
+  White: {fileID: 2100000, guid: 3bbf7221b93cc4b78805aba4b4e2be0d, type: 2}
+  WhiteEmittion: {fileID: 2100000, guid: 5bbb28c6c967b4e8b8ffab8d5d1317e8, type: 2}
+  Emission: {fileID: 2100000, guid: 75723e693e1ef4c4c97d8cd597da0288, type: 2}
+  EmissionOff: {fileID: 2100000, guid: 23d1304ff2a7f41b8aa87cde1a413fde, type: 2}
 --- !u!1 &558128439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,6 +3032,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564696621}
   m_CullTransparentMesh: 1
+--- !u!1 &609535640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609535642}
+  - component: {fileID: 609535643}
+  m_Layer: 0
+  m_Name: SwitchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &609535642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609535640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2905846, y: 2.8570373, z: 1.7868748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609535643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609535640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a90847e56a114434b53307a17b4b490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &616503183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5070,7 +5114,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75723e693e1ef4c4c97d8cd597da0288, type: 2}
+  - {fileID: 2100000, guid: 3bbf7221b93cc4b78805aba4b4e2be0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5216,21 +5260,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 925335435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c468b568458a848428937b361fc3e65b, type: 3}
+  m_Script: {fileID: 11500000, guid: 00debb3c9a0a04cb68c3aa66b9cf4d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisSwitchOn: 0
+  whiteSwitch: 0
+  bySwitch: 0
   colorLights:
   - {fileID: 1544491254}
   - {fileID: 207553409}
   - {fileID: 742625773}
   - {fileID: 510677439}
-  blueSwitch: {fileID: 925335435}
-  greenSwitch: {fileID: 1116912561}
-  redSwitch: {fileID: 549665891}
   goal: {fileID: 901488404}
-  Emittion: {fileID: 2100000, guid: 264459d61909b4b5c81ce0b69157c4d6, type: 2}
+  White: {fileID: 2100000, guid: 3bbf7221b93cc4b78805aba4b4e2be0d, type: 2}
   WhiteEmittion: {fileID: 2100000, guid: 5bbb28c6c967b4e8b8ffab8d5d1317e8, type: 2}
+  Emission: {fileID: 2100000, guid: 264459d61909b4b5c81ce0b69157c4d6, type: 2}
+  EmissionOff: {fileID: 2100000, guid: 80d523fbd4bde49bab53ebad47e093b3, type: 2}
 --- !u!1 &926437019
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,7 +6115,7 @@ GameObject:
   - component: {fileID: 1116912566}
   - component: {fileID: 1116912565}
   - component: {fileID: 1116912564}
-  - component: {fileID: 1116912563}
+  - component: {fileID: 1116912567}
   m_Layer: 0
   m_Name: GreenSwitch
   m_TagString: Switch
@@ -6095,30 +6139,6 @@ Transform:
   - {fileID: 1219083939}
   m_Father: {fileID: 788575335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1116912563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116912561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c468b568458a848428937b361fc3e65b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisSwitchOn: 0
-  colorLights:
-  - {fileID: 1479532188}
-  - {fileID: 2057418650}
-  - {fileID: 380031823}
-  - {fileID: 194454222}
-  blueSwitch: {fileID: 925335435}
-  greenSwitch: {fileID: 1116912561}
-  redSwitch: {fileID: 549665891}
-  goal: {fileID: 901488404}
-  Emittion: {fileID: 2100000, guid: c9a7bec9a31ff40019d0925cf46e801e, type: 2}
-  WhiteEmittion: {fileID: 2100000, guid: 5bbb28c6c967b4e8b8ffab8d5d1317e8, type: 2}
 --- !u!65 &1116912564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6190,6 +6210,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116912561}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1116912567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116912561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbce94a61a5d45069f88b3e3aa38c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteSwitch: 0
+  bySwitch: 0
+  colorLights:
+  - {fileID: 1479532188}
+  - {fileID: 2057418650}
+  - {fileID: 380031823}
+  - {fileID: 194454222}
+  goal: {fileID: 901488404}
+  White: {fileID: 2100000, guid: 3bbf7221b93cc4b78805aba4b4e2be0d, type: 2}
+  WhiteEmittion: {fileID: 2100000, guid: 5bbb28c6c967b4e8b8ffab8d5d1317e8, type: 2}
+  Emission: {fileID: 2100000, guid: c9a7bec9a31ff40019d0925cf46e801e, type: 2}
+  EmissionOff: {fileID: 2100000, guid: 1fa21ce806b7e455aa235af3af85b159, type: 2}
 --- !u!1 &1138338464
 GameObject:
   m_ObjectHideFlags: 0
@@ -7936,13 +7980,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482397611}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7933534, z: -0.60876137, w: 0}
-  m_LocalPosition: {x: 0, y: 2, z: 4}
+  m_LocalRotation: {x: 0, y: 0.49999994, z: -0.86602545, w: 0}
+  m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 0.5, y: 1.6514239, z: 0.25677487}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 901488405}
-  m_LocalEulerAnglesHint: {x: 75, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 120, y: 180, z: 0}
 --- !u!108 &1482397613
 Light:
   m_ObjectHideFlags: 0
@@ -7955,8 +7999,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 10
+  m_Intensity: 1
+  m_Range: 30
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -12608,3 +12652,4 @@ SceneRoots:
   - {fileID: 1794878602}
   - {fileID: 2102074611}
   - {fileID: 36048655}
+  - {fileID: 609535642}

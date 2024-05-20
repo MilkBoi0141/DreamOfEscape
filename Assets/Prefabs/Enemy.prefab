@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemyAnim: {fileID: 7640563506615750237}
-  attackSound: {fileID: 8300000, guid: 10045456a92134e049fb37559fa505b6, type: 3}
+  attackSound: {fileID: 8300000, guid: 1fd64b2bf369a493eafa09701072b0d7, type: 3}
   staySound: {fileID: 8300000, guid: 10045456a92134e049fb37559fa505b6, type: 3}
 --- !u!1 &7723768735237792157
 GameObject:

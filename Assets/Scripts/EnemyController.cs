@@ -23,17 +23,12 @@ public class EnemyController : MonoBehaviour
         audioSource = GetComponentInParent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             audioSource.clip = attackSound;
+            audioSource.Play();
         }
     }
 
@@ -42,7 +37,6 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             enemyAnim.SetBool("isWalking", true);
-            Debug.Log("walk");
             agent.SetDestination(player.transform.position);
         }
     }
@@ -52,6 +46,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             audioSource.clip = staySound;
+            audioSource.Play();
             await UniTask.Delay(TimeSpan.FromSeconds(2.0f));
 
             //止まる実装

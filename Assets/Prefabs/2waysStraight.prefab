@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 4737520902232956023}
   - component: {fileID: 1780629416783564527}
   m_Layer: 0
-  m_Name: Straight
+  m_Name: 2waysStraight
   m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
